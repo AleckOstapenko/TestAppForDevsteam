@@ -1,5 +1,6 @@
 const initialState = {
     items: [],
+    page: 1,
     loading: true,
     error: false
 }
@@ -24,38 +25,20 @@ const reducer = (state=initialState, action) => {
                 ...state,
                 loading: false,
                 error: action.payload.error
-            };    
-        // case 'ITEM_ADD_TO_CART':
-        //     const id = action.payload;
-        //     const item = state.menu.find(item => item.id === id);
-        //     const itemInCart = state.items.find(item => item.id === id);            
-        //     const newItem = {
-        //         title: item.title,
-        //         price: item.price,
-        //         url: item.url,
-        //         id: item.id,
-        //         qty: (itemInCart===undefined) ? 1 : itemInCart.qty + 1
-        //     };
-        //     if (itemInCart !== undefined){
-        //         const itemIndex = state.items.findIndex(item => item.id === id);
-        //         return {
-        //             ...state,
-        //             items: [
-        //                 ...state.items.slice(0,itemIndex),
-        //                 newItem,
-        //                 ...state.items.slice(itemIndex+1)
-        //             ],
-        //             total: state.total + newItem.price
-        //         }
-        //     }
-        //     return {
-        //         ...state,
-        //         items: [
-        //             ...state.items,
-        //             newItem
-        //         ],
-        //         total: state.total + newItem.price
-        //     };
+            };  
+        case 'NEXT_PAGE':
+            return {
+                ...state,
+                page: state.page + 1
+            };
+        case 'PREV_PAGE':
+            if (state.page === 1) {
+                return state;
+            }
+            return {
+                ...state,
+                page: state.page - 1
+            };      
         default: 
             return state; 
     }

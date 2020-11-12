@@ -21,14 +21,10 @@ class Picture extends Component {
 const mapStateToProps = (state) => {
   return {
       items: state.items,
-      item: state.item,
+      page: state.page,
       loading: state.loading,
       error: state.error
   }
 }
 
-const mapDispatchToProps = {
-  unsplashService
-} 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Picture);
+export default connect(mapStateToProps)(Picture);

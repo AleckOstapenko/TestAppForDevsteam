@@ -1,10 +1,10 @@
 const _apiBase = 'https://api.unsplash.com/photos', 
      _token='/?client_id=ab3411e4ac868c2646c0ed488dfd919ef612b04c264f3374c97fff98ed253dc9';
 
-const unsplashService = () => {
+const unsplashService = (page) => {
     return dispatch => {
         dispatch(loading());
-        fetch(`${_apiBase}${_token}`)
+        fetch(`${_apiBase}${_token}&page=${page}`)
             .then(res => res.json())
             .then(items => {dispatch(loadedGallerySuccess(items));                                                       
                         })            
@@ -14,22 +14,30 @@ const unsplashService = () => {
     }
 };
 
-export const loading = () => ({
+const loading = () => ({
     type: 'LOADING'
 });
 
-export const loadedGallerySuccess = items => ({
+const loadedGallerySuccess = items => ({
     type: 'LOADED_GALLERY_SUCCESS',
     payload: {
       items: [...items]
     }
 }); 
 
-export const loadedError = error => ({
+const loadedError = error => ({
     type: 'LOADED_ERROR',
     payload: {
       error
     }
 });
+
+export const nextPage = () => ({
+    type: 'NEXT_PAGE',
+})
+
+export const prevPage = () => ({
+    type: 'PREV_PAGE',
+})
 
 export default unsplashService;
