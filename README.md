@@ -15,8 +15,8 @@ TASK DESCRIPTION
 
 Implement a gallery based on React-Native (not React.js) that will display photos from unsplash.
 The application should contain two screens (pages):
-* List
-- mini image with title and author
-- when the user clicks on the image, the photo screen opens
-* The photo
-- displays one photo with the maximum area.
+1) List
+  - mini image with title and author
+  - when the user clicks on the image, the photo screen opens
+2) The photo
+  - displays one photo with the maximum area.
