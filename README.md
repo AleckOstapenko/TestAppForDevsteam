@@ -12,6 +12,7 @@ Used technologies:
 * High Order Components
 
 TASK DESCRIPTION
+
 Implement a gallery based on React-Native (not React.js) that will display photos from unsplash.
 The application should contain two screens (pages):
 * List
